@@ -1,0 +1,5 @@
+data_dir: data/row
+index_dir: data/index
+chunk_size: 300
+top_k: 5
+log_file: logs/app.log
