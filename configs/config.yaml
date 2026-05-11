@@ -1,4 +1,4 @@
-data_dir: data/row
+data_dir: data/raw
 index_dir: data/index
 chunk_size: 300
 top_k: 5
