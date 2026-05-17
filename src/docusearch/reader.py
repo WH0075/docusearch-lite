@@ -1,5 +1,5 @@
 from pathlib import Path
-from cleaner import clean_text
+from src.docusearch.cleaner import clean_text
 
 def read_text_file(file_path: Path) -> str:
     with open(file_path, "r", encoding="utf-8") as f:
@@ -10,11 +10,7 @@ def load_documents(data_dir: str) -> list[dict]:
     documents = []
     base_dir = Path(data_dir)
 
-    print("Scanning directory:", base_dir)
-
     for path in base_dir.rglob("*"):
-        print("Found path:", path, "suffix:", path.suffix)
-
         if path.suffix.lower() not in [".txt", ".md"]:
             continue
         

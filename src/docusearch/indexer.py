@@ -1,9 +1,9 @@
 import json
 from pathlib import Path
 
-from reader import load_documents
-from cleaner import clean_text
-from chunker import chunk_text
+from src.docusearch.reader import load_documents
+from src.docusearch.cleaner import clean_text
+from src.docusearch.chunker import chunk_text
 
 
 def build_index(data_dir: str, index_path: str, chunk_size: int = 300) -> list[dict]:
