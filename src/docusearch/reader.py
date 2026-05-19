@@ -10,6 +10,9 @@ def load_documents(data_dir: str) -> list[dict]:
     documents = []
     base_dir = Path(data_dir)
 
+    if not base_dir.exists():
+        raise FileNotFoundError(f"Data directory not found: {data_dir}")
+
     for path in base_dir.rglob("*"):
         if path.suffix.lower() not in [".txt", ".md"]:
             continue
@@ -22,4 +25,7 @@ def load_documents(data_dir: str) -> list[dict]:
             "text": text,
         })
     
+    if not documents:
+        raise ValueError(f"No readable documents found in: {data_dir}")
+
     return documents

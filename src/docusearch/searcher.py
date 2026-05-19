@@ -4,7 +4,7 @@ from pathlib import Path
 
 def load_index(index_path: str) -> list[dict]:
     path = Path(index_path)
-    if not path:
+    if not path.exists():
         raise FileNotFoundError(f"Index file not found: {index_path}")
     
     with open(path, "r", encoding="utf-8") as f:
@@ -18,6 +18,12 @@ def simple_score(query: str, text: str) -> int:
 
 
 def search(query: str, index_path: str, top_k: int = 5) -> list[dict]:
+    if not query.strip():
+        raise ValueError("query cannot be empty")
+    
+    if top_k <= 0:
+        raise ValueError("top_k must be positive")
+
     chunks = load_index(index_path)
     results = []
 
